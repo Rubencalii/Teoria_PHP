@@ -1,6 +1,6 @@
 <?php
 // Variables PHP con información personal
-$nombre = "Rube";
+$nombre = "Ruben";
 $edad = 21;
 $ciudad = "Granada";
 
@@ -55,25 +55,18 @@ $dia_espanol = $dias_espanol[$dia_semana];
             width: 90%;
             animation: fadeIn 0.8s ease-in;
         }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
         h1 {
             color: #667eea;
             margin-bottom: 1rem;
             font-size: 2.2rem;
             font-weight: 300;
         }
-        
+        h3 {
+            color: #555;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }   
+
         .info-card {
             background: #f8f9fa;
             padding: 1.5rem;
@@ -96,7 +89,7 @@ $dia_espanol = $dias_espanol[$dia_semana];
         }
         
         .value {
-            color: #667eea;
+            color: #555;
             font-weight: 600;
         }
         
@@ -173,15 +166,6 @@ $dia_espanol = $dias_espanol[$dia_semana];
                 <span class="label">Hora:</span>
                 <span class="value"><?php echo $hora_actual; ?></span>
             </div>
-        </div>
-        
-        <div class="php-badge">
-            Generado dinámicamente con PHP
-        </div>
-        
-        <div class="footer">
-            Esta página fue creada como mi primer ejercicio de PHP.<br>
-            ¡Los datos se actualizan automáticamente!
         </div>
     </div>
 </body>
