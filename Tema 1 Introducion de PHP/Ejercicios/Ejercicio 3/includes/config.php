@@ -1,6 +1,6 @@
 <?php
 // Configuración central para los ejercicios
-$siteTitle = "Mi Sitio Modular - Ejercicios PHP";
+$siteTitle = "Ejercicio PHP";
 $nav = [
     'inicio' => 'Inicio',
     'acerca' => 'Acerca',

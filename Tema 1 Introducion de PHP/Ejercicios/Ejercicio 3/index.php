@@ -17,11 +17,11 @@ echo '<div class="card-body">';
 echo '<h2>' . htmlentities($nav[$page]) . '</h2>';
 
 if ($page === 'inicio') {
-	echo '<p>Bienvenido al sistema de navegación dinámico. Usa la barra para cambiar de sección.</p>';
+	echo '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum fuga ea, natus officia ab, cum iste ex iure voluptas totam ad eligendi, facilis facere sint sapiente officiis harum blanditiis vitae!</p>';
 } elseif ($page === 'acerca') {
-	echo '<p>Este proyecto demuestra includes, navegación y validación con PHP puro.</p>';
+	echo '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum fuga ea, natus officia ab, cum iste ex iure voluptas totam ad eligendi, facilis facere sint sapiente officiis harum blanditiis vitae!</p>';
 } elseif ($page === 'contacto') {
-	echo '<p>Puedes simular enviar un mensaje con un simple formulario HTML.</p>';
+	echo '<p>Puedes enviar un mensaje con un simple formulario HTML.</p>';
 	echo '<form method="post" action="?page=contacto">';
 	echo '<div class="mb-3"><label class="form-label">Nombre</label><input name="nombre" class="form-control"></div>';
 	echo '<div class="mb-3"><label class="form-label">Mensaje</label><textarea name="mensaje" class="form-control"></textarea></div>';
