@@ -1,5 +1,5 @@
 <?php
-function fibonacci($n) {
+function Fibonacci($n) {
     if ($n <= 0) {
         return [];
     } elseif ($n == 1) {
@@ -20,4 +20,3 @@ $secuenciaFibonacci = fibonacci($numeroTerminos);
 echo "Los primeros $numeroTerminos términos de la secuencia de Fibonacci son: " .   
 implode(", ", $secuenciaFibonacci);
 ?>
-                    
