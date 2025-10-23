@@ -19,7 +19,7 @@ function ToHtml($emmet) {
 }
 
 // Ejemplos de uso
-echo ToHtml('a') . "\n"; // <a></a>
-echo ToHtml('div.oferta') . "\n"; // <div class="oferta"></div>
-echo ToHtml('div.coche#VWPolo') . "\n"; // <div class="coche" id="VWPolo"></div>
+echo ToHtml('a') . "\n"; 
+echo ToHtml('div.oferta') . "\n"; 
+echo ToHtml('div.coche#VWPolo') . "\n"; 
 ?>
