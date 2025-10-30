@@ -1,37 +1,21 @@
 <?php
-function mosaicoNumerico($filas , $columnas) {
-    $mosaico = " ";
-    for ( $i = 0; $i < $filas; $i++) {
-        for ( $j = 0; $j < $columnas; $j++) {
-            $mosaico .= rand(0, 9) . " ";
-        }
-        $mosaico .= "\n";
+// Genera el mosaico numérico solicitado:
+// Para n = 6 imprime:
+// 1
+// 22
+// 333
+// 4444
+// 55555
+// 666666
+function mosaicoNumerico($n) {
+    $n = (int)$n;
+    if ($n <= 0) return '';
+    $out = '';
+    for ($i = 1; $i <= $n; $i++) {
+        $out .= str_repeat((string)$i, $i) . PHP_EOL;
     }
-    return $mosaico;
+    return $out;
 }
-echo mosaicoNumerico(5, 10);
-?>
-<?php
-// Convierte una cadena Emmet simple en etiqueta HTML con clase e id
-function ToHtml($emmet) {
-    $pattern = '/^(\w+)(?:\.([\w-]+))?(?:#([\w-]+))?$/';
-    if (preg_match($pattern, $emmet, $matches)) {
-        $tag = $matches[1];
-        $class = isset($matches[2]) ? $matches[2] : '';
-        $id = isset($matches[3]) ? $matches[3] : '';
-        $attrs = '';
-        if ($class) {
-            $attrs .= ' class="' . $class . '"';
-        }
-        if ($id) {
-            $attrs .= ' id="' . $id . '"';
-        }
-        return "<$tag$attrs></$tag>";           
-    }
-    return '';
-}
-// Ejemplos de uso
-echo ToHtml('a') . "\n"; 
-echo ToHtml('div.oferta') . "\n"; 
-echo ToHtml('div.coche#VWPolo') . "\n"; 
+// Ejemplo de uso
+echo mosaicoNumerico(6);
 ?>

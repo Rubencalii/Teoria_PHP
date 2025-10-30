@@ -1,14 +1,9 @@
 <?php
-function primeraMayuscula($cadena) {
-    if (strlen($cadena) === 0) {
-        return $cadena;
-    }
-    $primeraLetra = strtoupper($cadena[0]);
-    $restoCadena = substr($cadena, 1);
-    return $primeraLetra . $restoCadena;
+// Pone en mayúscula la primera letra de cada palabra (soporte multibyte)
+function capitalizarPalabras($texto) {
+    return mb_convert_case($texto, MB_CASE_TITLE, "UTF-8");
 }
 // Ejemplo de uso
 $texto = "hola mundo";
-$textoConPrimeraMayuscula = primeraMayuscula($texto);
-echo $textoConPrimeraMayuscula; // Salida: "Hola mundo"
+echo capitalizarPalabras($texto); // Salida: "Hola Mundo"
 ?>

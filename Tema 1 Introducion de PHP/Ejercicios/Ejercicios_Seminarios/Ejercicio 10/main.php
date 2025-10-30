@@ -1,22 +1,19 @@
 <?php
-function Fibonacci($n) {
-    if ($n <= 0) {
-        return [];
-    } elseif ($n == 1) {
-        return [0];
-    } elseif ($n == 2) {
-        return [0, 1];
+// Devuelve el término n-ésimo de Fibonacci (definición: F(0)=0, F(1)=1)
+function fibonacciTerm($n) {
+    $n = (int)$n;
+    if ($n < 0) return null;
+    if ($n === 0) return 0;
+    if ($n === 1) return 1;
+    $a = 0; $b = 1;
+    for ($i = 2; $i <= $n; $i++) {
+        $tmp = $a + $b;
+        $a = $b;
+        $b = $tmp;
     }
-
-    $fib = [0, 1];
-    for ($i = 2; $i < $n; $i++) {
-        $fib[] = $fib[$i - 1] + $fib[$i - 2];
-    }
-    return $fib;
+    return $b;
 }
 // Ejemplo de uso
-$numeroTerminos = 10;
-$secuenciaFibonacci = fibonacci($numeroTerminos);
-echo "Los primeros $numeroTerminos términos de la secuencia de Fibonacci son: " .   
-implode(", ", $secuenciaFibonacci);
+$numero = 10;
+echo "El término Fibonacci número $numero es: " . fibonacciTerm($numero);
 ?>

@@ -1,13 +1,14 @@
 <?php
-function sumaDigitos($numeros) {
+// Suma los dígitos de un número (ej: 245 -> 2+4+5 = 11)
+function sumaDigitosNumero($n) {
+    $n = abs((int)$n);
     $suma = 0;
-    foreach ($numeros as $summando) {
-        $suma += array_sum(str_split($summando));
+    foreach (str_split((string)$n) as $d) {
+        $suma += (int)$d;
     }
     return $suma;
 }
 // Ejemplo de uso
-$numeros = [123, 456, 789];
-$resultado = sumaDigitos($numeros);
-echo "La suma de los dígitos es: $resultado"; // Salida: La suma de los dígitos es: 45
+$numero = 245;
+echo "La suma de los dígitos de $numero es: " . sumaDigitosNumero($numero);
 ?>
