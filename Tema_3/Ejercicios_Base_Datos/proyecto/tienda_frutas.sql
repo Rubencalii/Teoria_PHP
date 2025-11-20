@@ -93,3 +93,81 @@ INSERT INTO `productos` (`nombre`, `categoria_id`, `precio`, `stock`, `activo`) 
 -- Ejercicio 6: DELETE - Eliminar Productos
 
     UPDATE productos SET activo = 0 WHERE id = 3;
+
+-- Ejercicio 7: Simulacion de compra
+
+    -- A. Crear un nuevo pedido para un usuario 
+
+        INSERT INTO pedidos (usuario_id, total) VALUES (1, 15.00);
+    
+    -- B. Reducir el stock del producto 
+
+        UPDATE productos SET stock = stock - 3 WHERE id = 4;
+    
+    -- C. Calcular el total del pedido 
+
+        SELECT SUM(precio * 3) AS total_pedido FROM productos WHERE id = 4;
+    
+    -- D. Usar transacciones para garentizar consistencia
+
+        START TRANSACTION;
+
+        INSERT INTO pedidos (usuario_id, total) VALUES (1, 15.00);
+        UPDATE productos SET stock = stock - 3 WHERE id = 4;
+
+        COMMIT;
+        ROLLBACK;
+
+    -- E. Manejar errores (stock insuficiente, usuario no existen, etc)
+    
+        SET @usuario_id = 1;
+        SET @producto_id = 4;
+        SET @cantidad = 3;
+
+        START TRANSACTION;
+
+        DECLARE stock_actual INT;
+
+        SELECT stock INTO stock_actual FROM productos WHERE id = @producto_id;
+
+        IF stock_actual >= @cantidad THEN
+            INSERT INTO pedidos (usuario_id, total) VALUES (@usuario_id, (SELECT precio * @cantidad FROM productos WHERE id = @producto_id));
+            UPDATE productos SET stock = stock - @cantidad WHERE id = @producto_id;
+            COMMIT;
+        ELSE
+            ROLLBACK;
+            SELECT 'Error: Stock insuficiente' AS mensaje;
+        END IF;
+    END; 
+
+-- Ejercicio 8: Reportes y analisis
+
+    -- A. Productos mas vendidos
+
+        SELECT p.nombre, SUM(pd.cantidad) AS total_vebdudi 
+        FROM productos p
+        JOIN pedido_detalles pd ON p.id = pd.producto_id
+        GROUP BY p.id
+        ORDER BY total_vendido DESC
+        LIMIT 5;
+
+    -- B. Ingresos totales por categoria
+    
+        SELECT c.nombre, SUM(pd.cantidad * p.precio) AS ingresos_totales
+        FROM categorias c
+        JOIN productos p ON c.id = p.categoria_id
+        JOIN pedido_detalles pd ON p.id = pd.producto_id
+        GROUP BY c.id;
+    
+    -- C.Productos con bajo stock
+
+        SELECT * FROM productos WHERE stock < 10;   
+
+    -- D. Usuarios con mas compras
+
+        SELECT u.nombre_usuario, COUNT(p.id) AS total_compras
+        FROM usuarios u
+        JOIN pedidos p ON u.id = p.usuario_id
+        GROUP BY u.id
+        ORDER BY total_compras DESC
+        LIMIT 5;
