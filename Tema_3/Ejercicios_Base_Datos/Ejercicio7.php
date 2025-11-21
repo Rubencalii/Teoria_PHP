@@ -12,7 +12,7 @@ try {
     $producto_id = 4;
     $cantidad = 3;
     
-    echo "<h2>Simulación de compra </h2>";
+    echo "<h2>Simulacion de compra </h2>";
     
     $pdo->beginTransaction();
     
@@ -30,7 +30,7 @@ try {
         $stmt->execute([$cantidad, $producto_id]);
         
         $pdo->commit();
-        echo "Compra hecha, total: " . $total . "€";
+        echo "Compra echo, total: " . $total . "€";
     } else {
         $pdo->rollBack();
         echo "Stock insuficiente";

@@ -14,14 +14,14 @@ try {
         echo $row['nombre'] . " - " . $row['precio'] . "€<br>";
     }
     
-    echo "<h2>B. Productos de categoría 1</h2>";
+    echo "<h2>B. Productos de categoria 1</h2>";
     $stmt = $pdo->query("SELECT * FROM productos WHERE categoria_id = 1");
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo $row['nombre'] . "<br>";
     }
     
     echo "<h2>C. Productos con stock menor a 20</h2>";
-    $stmt = $pdo->query("SELECT * FROM productos WHERE stock < 20");
+    $stmt = $pdo->query("SELECT * FROM productos WHERE stock < 25");
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo $row['nombre'] . " - Stock: " . $row['stock'] . "<br>";
     }

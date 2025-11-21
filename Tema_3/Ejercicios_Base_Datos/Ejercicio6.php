@@ -13,7 +13,7 @@ try {
     echo "Productos desactivados: " . $stmt . "<br>";
     
     echo "<h2>Productos activos</h2>";
-    $stmt = $pdo->query("SELECT * FROM productos WHERE activo = 1");
+    $stmt = $pdo->query("SELECT * FROM productos");
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo $row['nombre'] . "<br>";
     }
