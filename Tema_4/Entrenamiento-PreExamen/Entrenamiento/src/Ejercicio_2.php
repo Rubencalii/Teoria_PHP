@@ -64,3 +64,41 @@
             return null;
         }
     }
+
+    //Parte C: Clase SocioPremium
+
+    class SSocioPremium extends Socio {
+        private int $limiteLibros = 0 ;
+
+        public function __construct(int $id, string $nombre, string $email, DateTime $fechaAlta, bool $activo, int $limiteLibros) {
+            parent::__construct($id, $nombre, $email, $fechaAlta, $activo);
+            $this -> limiteLibros = $limiteLibros;
+        }
+
+        public function getRol(): string {
+            return "Socio Premium";
+        }
+
+        public function puedePrestar (int $librosActuales): bool {
+            return $librosActuales < $this -> limiteLibros;
+        }
+    }
+
+    //Parte D: Clase Bibliotecario
+
+    class Bibliotecario extends Persona {
+        private string $seccion ;
+
+        public function __construct(int $id, string $nombre, string $email, string $seccion) {
+            parent::__construct($id, $nombre, $email);
+            $this -> seccion = $seccion;
+        }
+        
+        public function getRol(): string {
+            return "Bibliotecario - " . $this->seccion;
+        }
+
+        public function guardar(): bool {
+            return true;
+        }
+    }
