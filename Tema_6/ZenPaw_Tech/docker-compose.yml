@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  php:
+    image: php:8.2-fpm
+    container_name: zenpaw_php
+    working_dir: /var/www/html
+    volumes:
+      - ./ZenPaw_Tech:/var/www/html
+    ports:
+      - "9000:9000"
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+    depends_on:
+      - db
+  web:
+    image: nginx:alpine
+    container_name: zenpaw_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./ZenPaw_Tech:/var/www/html
+      - ./ZenPaw_Tech/config/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+  db:
+    image: mysql:8.0
+    container_name: zenpaw_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: zenpaw_db
+      MYSQL_USER: zenpaw
+      MYSQL_PASSWORD: zenpawpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
