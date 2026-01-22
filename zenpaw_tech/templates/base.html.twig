@@ -2,16 +2,74 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        <title>{% block title %}ZenPaw Tech{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f431.svg">
+        <style>
+            body { background: #f8fafc; }
+            header.hero {
+                background: linear-gradient(90deg, #3a7bd5 0%, #00d2ff 100%);
+                color: #fff;
+                padding: 2.5rem 0 1.5rem 0;
+                text-align: center;
+                margin-bottom: 2rem;
+                border-radius: 0 0 1.5rem 1.5rem;
+                box-shadow: 0 2px 16px #3a7bd533;
+            }
+            header.hero h1 {
+                font-size: 2.7rem;
+                margin-bottom: 0.2em;
+                letter-spacing: 1px;
+            }
+            header.hero p {
+                font-size: 1.2rem;
+                opacity: 0.95;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 1rem;
+            }
+            nav a {
+                color: #fff;
+                font-weight: 500;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            nav a:hover {
+                color: #ffe082;
+            }
+            main {
+                max-width: 700px;
+                margin: 0 auto;
+                padding: 1.5rem;
+            }
+            footer {
+                text-align: center;
+                margin-top: 3em;
+                color: #888;
+                font-size: 1rem;
+            }
+        </style>
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts %}{% block importmap %}{{ importmap('app') }}{% endblock %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header class="hero">
+            <h1>🐾 ZenPaw Tech</h1>
+            <p>Blog minimalista sobre desarrollo de software</p>
+            <nav>
+                <a href="/">Inicio</a>
+                <a href="/acerca-de">Acerca de</a>
+            </nav>
+        </header>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <footer>
+            <small>ZenPaw Tech &copy; {{ "now"|date("Y") }}</small>
+        </footer>
     </body>
 </html>

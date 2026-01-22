@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    container_name: zenpaw_tech-php
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html:rw
+    environment:
+      SYMFONY_ENV: dev
+    depends_on:
+      - database
+    ports:
+      - "9000:9000"
+      - "8010:8010"
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: app
+    healthcheck:
+      test: ["CMD", "pg_isready", "-d", "app", "-U", "app"]
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+  mailer:
+    image: axllent/mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+volumes:
+  database_data:

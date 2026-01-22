@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }} | ZenPaw Tech{% endblock %}
+
+{% block body %}
+<article style="background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px #3a7bd522; padding: 2.5rem 2.5rem 2rem 2.5rem; border-left: 6px solid #3a7bd5; margin-bottom:2rem;">
+    <header style="margin-bottom: 1.2rem;">
+        <h1 style="margin-bottom:0.2em; color:#3a7bd5;">{{ post.title }}</h1>
+        <span style="font-size:1rem; color:#888;">Publicado el {{ post.publishedAt|date('d M Y, H:i') }}</span>
+    </header>
+    <div style="font-size:1.15rem; color:#222; line-height:1.7;">
+        {{ post.content|nl2br|raw }}
+    </div>
+</article>
+<a href="/" style="color:#3a7bd5; font-weight:500; text-decoration:none;">&larr; Volver al inicio</a>
+{% endblock %}

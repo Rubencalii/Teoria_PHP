@@ -13,47 +13,45 @@ class Post
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $title = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $slug = null;
+    #[ORM\Column(length: 255)]
+    private string $title;
 
     #[ORM\Column(length: 255)]
+    private string $slug;
+
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $summary = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $content = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $publishedAt = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeImmutable $publishedAt;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function setTitle(?string $title): static
+    public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
 
-    public function getSlug(): ?string
+    public function getSlug(): string
     {
         return $this->slug;
     }
 
-    public function setSlug(?string $slug): static
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
         return $this;
     }
 
@@ -62,10 +60,9 @@ class Post
         return $this->summary;
     }
 
-    public function setSummary(string $summary): static
+    public function setSummary(?string $summary): self
     {
         $this->summary = $summary;
-
         return $this;
     }
 
@@ -74,22 +71,20 @@ class Post
         return $this->content;
     }
 
-    public function setContent(string $content): static
+    public function setContent(?string $content): self
     {
         $this->content = $content;
-
         return $this;
     }
 
-    public function getPublishedAt(): ?\DateTimeImmutable
+    public function getPublishedAt(): \DateTimeImmutable
     {
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(\DateTimeImmutable $publishedAt): static
+    public function setPublishedAt(\DateTimeImmutable $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
-
         return $this;
     }
 }
